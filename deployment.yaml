@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: argoapp
+  name: argoapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: argoapp
+  template:
+    metadata:
+      labels:
+        app: argoapp
+    spec:
+      containers:
+      - image: quay.io/redhatworkshops/bgd:latest
+        name: argoapp
+        env:
+        - name: COLOR
+          value: "blue"
